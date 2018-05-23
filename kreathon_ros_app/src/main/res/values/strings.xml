@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Kreathon Demo App</string>
+    <string name="ros_master_uri">http://192.168.2.189:11311</string>
+</resources>

@@ -21,13 +21,13 @@ task wrapper(type: Wrapper) {
 buildscript {
     apply from: "https://github.com/rosjava/android_core/raw/kinetic/buildscript.gradle"
 }
-
+/*
 apply plugin: 'catkin'
 
 allprojects {
     group 'com.github.rosjava.android_apps'
     version = project.catkin.pkg.version
-}
+}*/
 
 subprojects {
     /*

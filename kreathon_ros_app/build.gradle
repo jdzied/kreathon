@@ -10,6 +10,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        // Enabling multidex support.
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -33,4 +35,6 @@ dependencies {
     compile 'org.ros.rosjava_messages:sensor_msgs:[0.1,)'
     compile 'me.dm7.barcodescanner:zbar:1.9.8'
     compile 'me.dm7.barcodescanner:zxing:1.9.8'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'org.mongodb:mongo-java-driver:3.6.3'
 }

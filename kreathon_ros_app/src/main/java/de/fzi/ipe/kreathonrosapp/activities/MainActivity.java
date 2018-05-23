@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private Button takeImageButton;
     private Button viewImageButton;
     private Button scanBarcodeButton;
+    private Button mongoButton;
 
     public final static NodeMainExecutor nodeMainExecutor = DefaultNodeMainExecutor.newDefault();
 
@@ -77,6 +78,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 onViewImageClick();
+            }
+        });
+
+        mongoButton = (Button) findViewById(R.id.mongoButton);
+        mongoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mongoButtonClick();
             }
         });
 
@@ -144,6 +153,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void onScanBarcodeClick() {
         Intent intent = new Intent(this, BarcodeScannerActivity.class);
+        startActivity(intent);
+    }
+
+    private void mongoButtonClick() {
+        Intent intent = new Intent(this, MongoDBActivity.class);
+        intent.putExtra("MongoURL", R.string.mongo_url);
         startActivity(intent);
     }
 }

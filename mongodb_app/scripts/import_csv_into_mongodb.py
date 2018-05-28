@@ -64,7 +64,7 @@ if __name__ == '__main__':
         print('please provide a csv file')
         sys.exit(1)
     
-    client = MongoClient('mongodb://172.22.186.34:27017')
+    client = MongoClient('mongodb://172.22.222.54:27017')
     # check if the server is avaiable
     try:
         client.admin.command('ismaster')
@@ -73,7 +73,6 @@ if __name__ == '__main__':
         sys.exit(1)
 
     row_list = read_data_from_csv(csv_file)
-    print(len(row_list))
 
     if(len(row_list) > 1):
         # parse labels 
@@ -82,9 +81,6 @@ if __name__ == '__main__':
         print("csv file is empty")
         sys.exit(1)
 
-    for l in range(0, len(labels)):
-        print(labels[l])
-        
     del row_list[0]
 
     write_bulk_to_mongodb(client, labels, row_list)

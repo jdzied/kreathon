@@ -7,10 +7,11 @@ import pymongo
 from pymongo import MongoClient
 from pymongo.errors import ConnectionFailure
 
-def write_bulk_to_mongodb(client, labels, row_list):
+def write_bulk_to_mongodb(client, db_name, col_name, labels, row_list):
     label_length = len(labels)
-    db = client.kreathon
 
+    db = getattr(client, db_name)
+        
     table_list = []
 #    insert_num = 0
     for row in row_list:
@@ -23,10 +24,10 @@ def write_bulk_to_mongodb(client, labels, row_list):
         
         table_list.append(doc)
 
-    db.delete_me.insert_many(table_list)
+    getattr(db, col_name).insert_many(table_list)
 
 
-def write_one_to_mongodb(client, labels, row_list):
+def write_one_to_mongodb(client, db_name, col_name, labels, row_list):
     label_length = len(labels)
     db = client.kreathon
 
@@ -58,13 +59,19 @@ def read_data_from_csv(csv_file):
 if __name__ == '__main__':
     print('import csv into mongo database')
     csv_file = ""
-    if(len(sys.argv) > 1):
+    db_name = ""
+    col_name = "" 
+    if(len(sys.argv) > 3):
         csv_file = sys.argv[1]
+        db_name = sys.argv[2]
+        col_name = sys.argv[3]
     else:
         print('please provide a csv file')
         sys.exit(1)
+
     
-    client = MongoClient('mongodb://172.22.222.54:27017')
+    
+    client = MongoClient('mongodb://192.168.2.117:27017')
     # check if the server is avaiable
     try:
         client.admin.command('ismaster')
@@ -83,4 +90,4 @@ if __name__ == '__main__':
 
     del row_list[0]
 
-    write_bulk_to_mongodb(client, labels, row_list)
+    write_bulk_to_mongodb(client, db_name, col_name, labels, row_list)

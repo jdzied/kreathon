@@ -1,0 +1,7 @@
+#Tue May 29 11:22:51 CEST 2018
+base.0=C\:\\Users\\JonathanDziedzitz\\Documents\\kreathon\\AndroidApp\\kreathon_ros_app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_189c8e341be54eb256830e4f73e6f38c21a8c66e
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=C\:\\Users\\JonathanDziedzitz\\Documents\\kreathon\\AndroidApp\\kreathon_ros_app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_583ceaffa559c2f22c785e2c0a26bca034df9828\\classes.dex
+base.1=C\:\\Users\\JonathanDziedzitz\\Documents\\kreathon\\AndroidApp\\kreathon_ros_app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_583ceaffa559c2f22c785e2c0a26bca034df9828
+file.0=C\:\\Users\\JonathanDziedzitz\\Documents\\kreathon\\AndroidApp\\kreathon_ros_app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_189c8e341be54eb256830e4f73e6f38c21a8c66e\\classes.dex

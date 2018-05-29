@@ -1,5 +1,0 @@
-<resources>
-    <string name="app_name">Kreathon Demo App</string>
-    <string name="ros_master_uri">http://192.168.2.189:11311</string>
-    <string name="mongo_url">172.22.186.34:27017</string>
-</resources>

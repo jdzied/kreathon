@@ -1,0 +1,198 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:2:1-55:12
+	package
+		ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:3:5-40
+		INJECTED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml
+uses-feature#android.hardware.camera
+ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:5:5-7:35
+	android:required
+		ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:7:9-32
+	android:name
+		ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:6:9-47
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:9:5-81
+MERGED from [org.ros.android_core:android_10:0.3.3] C:\Users\JonathanDziedzitz\.android\build-cache\62685ed4da25a92a6d4e9669c0fcf004130c6860\output\AndroidManifest.xml:12:5-81
+	android:name
+		ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:9:22-78
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:10:5-76
+MERGED from [org.ros.android_core:android_10:0.3.3] C:\Users\JonathanDziedzitz\.android\build-cache\62685ed4da25a92a6d4e9669c0fcf004130c6860\output\AndroidManifest.xml:13:5-76
+	android:name
+		ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:10:22-73
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:11:5-76
+MERGED from [org.ros.android_core:android_10:0.3.3] C:\Users\JonathanDziedzitz\.android\build-cache\62685ed4da25a92a6d4e9669c0fcf004130c6860\output\AndroidManifest.xml:14:5-76
+	android:name
+		ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:11:22-73
+uses-permission#android.permission.INTERNET
+ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:12:5-67
+	android:name
+		ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:12:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:13:5-79
+	android:name
+		ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:13:22-76
+uses-permission#android.permission.WAKE_LOCK
+ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:14:5-68
+MERGED from [org.ros.android_core:android_10:0.3.3] C:\Users\JonathanDziedzitz\.android\build-cache\62685ed4da25a92a6d4e9669c0fcf004130c6860\output\AndroidManifest.xml:15:5-68
+	android:name
+		ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:14:22-65
+uses-permission#android.permission.CAMERA
+ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:15:5-65
+	android:name
+		ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:15:22-62
+application
+ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:17:5-53:19
+MERGED from [org.ros.android_core:android_10:0.3.3] C:\Users\JonathanDziedzitz\.android\build-cache\62685ed4da25a92a6d4e9669c0fcf004130c6860\output\AndroidManifest.xml:18:5-34:19
+MERGED from [com.android.support:appcompat-v7:25.1.0] C:\Users\JonathanDziedzitz\.android\build-cache\63ec115ae94aeedfa9890c934cc4dce320b9d5f3\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.1.0] C:\Users\JonathanDziedzitz\.android\build-cache\b2b33f9ec4b0fb209268d46f945f5a57d5a6a4de\output\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:25.1.0] C:\Users\JonathanDziedzitz\.android\build-cache\e9ac9ec301dd77bcb254858edacdeba2916b73a3\output\AndroidManifest.xml:23:5-20
+MERGED from [me.dm7.barcodescanner:zbar:1.9.8] C:\Users\JonathanDziedzitz\.android\build-cache\426af02de75ebc25b1a7f5d715cfbca851609659\output\AndroidManifest.xml:11:5-20
+MERGED from [me.dm7.barcodescanner:zxing:1.9.8] C:\Users\JonathanDziedzitz\.android\build-cache\fd7be525467cab7043373d8f1c5f870eb7070ae6\output\AndroidManifest.xml:11:5-20
+MERGED from [me.dm7.barcodescanner:core:1.9.8] C:\Users\JonathanDziedzitz\.android\build-cache\d4cf2227f34cd2a2223c6d07e273562532d896ac\output\AndroidManifest.xml:11:5-20
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\JonathanDziedzitz\.android\build-cache\0da3f4051217c06fabeb7ace270e6be7901e783b\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\JonathanDziedzitz\.android\build-cache\74231d475974f289b3ff562642a6953ac28d8a75\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\JonathanDziedzitz\.android\build-cache\00ae5f3dbadfc856758f553b73a31c61fa96f81d\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\JonathanDziedzitz\.android\build-cache\f8ec989f7c34ad1d8059cb9fe0a9624808a18f34\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\JonathanDziedzitz\.android\build-cache\41129e1c92ee67644998dc7ca07b4a898c5d9aea\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\JonathanDziedzitz\.android\build-cache\235c217e8454b56156f698dea5a6010c578750a5\output\AndroidManifest.xml:29:5-20
+	android:label
+		ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:19:9-41
+	android:supportsRtl
+		ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:21:9-35
+	android:roundIcon
+		ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:20:9-54
+	android:allowBackup
+		ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:18:9-35
+	android:icon
+		ADDED from [org.ros.android_core:android_10:0.3.3] C:\Users\JonathanDziedzitz\.android\build-cache\62685ed4da25a92a6d4e9669c0fcf004130c6860\output\AndroidManifest.xml:19:9-36
+	android:theme
+		ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:22:9-40
+activity#de.fzi.ipe.kreathonrosapp.activities.MainActivity
+ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:23:9-29:20
+	android:name
+		ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:23:19-83
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:24:13-28:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:25:17-69
+	android:name
+		ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:25:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:27:17-77
+	android:name
+		ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:27:27-74
+activity#de.fzi.ipe.kreathonrosapp.activities.ViewImageActivity
+ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:31:9-91
+	android:name
+		ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:31:19-88
+activity#de.fzi.ipe.kreathonrosapp.activities.BarcodeScannerActivity
+ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:33:9-39:20
+	android:label
+		ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:36:13-51
+	android:uiOptions
+		ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:35:13-57
+	android:theme
+		ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:34:13-51
+	android:name
+		ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:33:19-93
+meta-data#android.support.UI_OPTIONS
+ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:37:13-38:60
+	android:value
+		ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:38:17-57
+	android:name
+		ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:37:24-65
+activity#de.fzi.ipe.kreathonrosapp.activities.MongoDBActivity
+ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:41:9-89
+	android:name
+		ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:41:19-86
+provider#android.support.v4.content.FileProvider
+ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:43:9-51:20
+	android:authorities
+		ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:45:13-73
+	android:grantUriPermissions
+		ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:47:13-47
+	android:exported
+		ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:46:13-37
+	android:name
+		ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:44:13-67
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:48:13-50:54
+	android:resource
+		ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:50:17-51
+	android:name
+		ADDED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:49:17-67
+uses-sdk
+INJECTED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [org.ros.android_core:android_15:0.3.3] C:\Users\JonathanDziedzitz\.android\build-cache\0f95a4fcf0b8788e1339f8efe18797eb323ea65c\output\AndroidManifest.xml:8:5-10:41
+MERGED from [org.ros.android_core:android_10:0.3.3] C:\Users\JonathanDziedzitz\.android\build-cache\62685ed4da25a92a6d4e9669c0fcf004130c6860\output\AndroidManifest.xml:8:5-10:41
+MERGED from [com.android.support:appcompat-v7:25.1.0] C:\Users\JonathanDziedzitz\.android\build-cache\63ec115ae94aeedfa9890c934cc4dce320b9d5f3\output\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:25.1.0] C:\Users\JonathanDziedzitz\.android\build-cache\b2b33f9ec4b0fb209268d46f945f5a57d5a6a4de\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.1.0] C:\Users\JonathanDziedzitz\.android\build-cache\e9ac9ec301dd77bcb254858edacdeba2916b73a3\output\AndroidManifest.xml:21:5-43
+MERGED from [me.dm7.barcodescanner:zbar:1.9.8] C:\Users\JonathanDziedzitz\.android\build-cache\426af02de75ebc25b1a7f5d715cfbca851609659\output\AndroidManifest.xml:7:5-9:41
+MERGED from [me.dm7.barcodescanner:zxing:1.9.8] C:\Users\JonathanDziedzitz\.android\build-cache\fd7be525467cab7043373d8f1c5f870eb7070ae6\output\AndroidManifest.xml:7:5-9:41
+MERGED from [me.dm7.barcodescanner:core:1.9.8] C:\Users\JonathanDziedzitz\.android\build-cache\d4cf2227f34cd2a2223c6d07e273562532d896ac\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\JonathanDziedzitz\.android\build-cache\0da3f4051217c06fabeb7ace270e6be7901e783b\output\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\JonathanDziedzitz\.android\build-cache\74231d475974f289b3ff562642a6953ac28d8a75\output\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\JonathanDziedzitz\.android\build-cache\00ae5f3dbadfc856758f553b73a31c61fa96f81d\output\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\JonathanDziedzitz\.android\build-cache\f8ec989f7c34ad1d8059cb9fe0a9624808a18f34\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\JonathanDziedzitz\.android\build-cache\41129e1c92ee67644998dc7ca07b4a898c5d9aea\output\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\JonathanDziedzitz\.android\build-cache\235c217e8454b56156f698dea5a6010c578750a5\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:multidex:1.0.1] C:\Users\JonathanDziedzitz\.android\build-cache\92eadc49962270c2ef75fa66705b17e06704cd88\output\AndroidManifest.xml:18:5-42
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:25.1.0] C:\Users\JonathanDziedzitz\.android\build-cache\63ec115ae94aeedfa9890c934cc4dce320b9d5f3\output\AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		INJECTED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml
+uses-permission#android.permission.SYSTEM_ALERT_WINDOW
+ADDED from [org.ros.android_core:android_10:0.3.3] C:\Users\JonathanDziedzitz\.android\build-cache\62685ed4da25a92a6d4e9669c0fcf004130c6860\output\AndroidManifest.xml:16:5-78
+	android:name
+		ADDED from [org.ros.android_core:android_10:0.3.3] C:\Users\JonathanDziedzitz\.android\build-cache\62685ed4da25a92a6d4e9669c0fcf004130c6860\output\AndroidManifest.xml:16:22-75
+activity#org.ros.android.MasterChooser
+ADDED from [org.ros.android_core:android_10:0.3.3] C:\Users\JonathanDziedzitz\.android\build-cache\62685ed4da25a92a6d4e9669c0fcf004130c6860\output\AndroidManifest.xml:21:9-25:54
+	android:label
+		ADDED from [org.ros.android_core:android_10:0.3.3] C:\Users\JonathanDziedzitz\.android\build-cache\62685ed4da25a92a6d4e9669c0fcf004130c6860\output\AndroidManifest.xml:23:13-45
+	android:launchMode
+		ADDED from [org.ros.android_core:android_10:0.3.3] C:\Users\JonathanDziedzitz\.android\build-cache\62685ed4da25a92a6d4e9669c0fcf004130c6860\output\AndroidManifest.xml:24:13-42
+	android:theme
+		ADDED from [org.ros.android_core:android_10:0.3.3] C:\Users\JonathanDziedzitz\.android\build-cache\62685ed4da25a92a6d4e9669c0fcf004130c6860\output\AndroidManifest.xml:25:13-51
+	android:name
+		ADDED from [org.ros.android_core:android_10:0.3.3] C:\Users\JonathanDziedzitz\.android\build-cache\62685ed4da25a92a6d4e9669c0fcf004130c6860\output\AndroidManifest.xml:22:13-57
+service#org.ros.android.NodeMainExecutorService
+ADDED from [org.ros.android_core:android_10:0.3.3] C:\Users\JonathanDziedzitz\.android\build-cache\62685ed4da25a92a6d4e9669c0fcf004130c6860\output\AndroidManifest.xml:27:9-33:19
+	tools:ignore
+		ADDED from [org.ros.android_core:android_10:0.3.3] C:\Users\JonathanDziedzitz\.android\build-cache\62685ed4da25a92a6d4e9669c0fcf004130c6860\output\AndroidManifest.xml:29:13-43
+	android:name
+		ADDED from [org.ros.android_core:android_10:0.3.3] C:\Users\JonathanDziedzitz\.android\build-cache\62685ed4da25a92a6d4e9669c0fcf004130c6860\output\AndroidManifest.xml:28:13-67
+intent-filter#org.ros.android.NodeMainExecutorService
+ADDED from [org.ros.android_core:android_10:0.3.3] C:\Users\JonathanDziedzitz\.android\build-cache\62685ed4da25a92a6d4e9669c0fcf004130c6860\output\AndroidManifest.xml:30:13-32:29
+action#org.ros.android.NodeMainExecutorService
+ADDED from [org.ros.android_core:android_10:0.3.3] C:\Users\JonathanDziedzitz\.android\build-cache\62685ed4da25a92a6d4e9669c0fcf004130c6860\output\AndroidManifest.xml:31:17-82
+	android:name
+		ADDED from [org.ros.android_core:android_10:0.3.3] C:\Users\JonathanDziedzitz\.android\build-cache\62685ed4da25a92a6d4e9669c0fcf004130c6860\output\AndroidManifest.xml:31:25-79
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+IMPLIED from C:\Users\JonathanDziedzitz\Documents\kreathon\AndroidApp\kreathon_ros_app\src\main\AndroidManifest.xml:2:1-55:12 reason: org.ros.android.android_10 requested WRITE_EXTERNAL_STORAGE
+meta-data#android.support.VERSION
+ADDED from [com.android.support:support-v4:25.3.1] C:\Users\JonathanDziedzitz\.android\build-cache\0da3f4051217c06fabeb7ace270e6be7901e783b\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\JonathanDziedzitz\.android\build-cache\74231d475974f289b3ff562642a6953ac28d8a75\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\JonathanDziedzitz\.android\build-cache\00ae5f3dbadfc856758f553b73a31c61fa96f81d\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\JonathanDziedzitz\.android\build-cache\f8ec989f7c34ad1d8059cb9fe0a9624808a18f34\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\JonathanDziedzitz\.android\build-cache\41129e1c92ee67644998dc7ca07b4a898c5d9aea\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\JonathanDziedzitz\.android\build-cache\235c217e8454b56156f698dea5a6010c578750a5\output\AndroidManifest.xml:25:5-27:34
+	android:value
+		ADDED from [com.android.support:support-v4:25.3.1] C:\Users\JonathanDziedzitz\.android\build-cache\0da3f4051217c06fabeb7ace270e6be7901e783b\output\AndroidManifest.xml:27:9-31
+	android:name
+		ADDED from [com.android.support:support-v4:25.3.1] C:\Users\JonathanDziedzitz\.android\build-cache\0da3f4051217c06fabeb7ace270e6be7901e783b\output\AndroidManifest.xml:26:9-47

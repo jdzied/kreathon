@@ -1,0 +1,7 @@
+#Tue May 29 11:22:14 CEST 2018
+base.0=C\:\\Users\\JonathanDziedzitz\\Documents\\kreathon\\AndroidApp\\roscameratestapp\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_45111cffe21376b9bdee4007acc354dd1678ee96
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=C\:\\Users\\JonathanDziedzitz\\Documents\\kreathon\\AndroidApp\\roscameratestapp\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_749d824203385a0ba03faab209b8d5f5e860d25f\\classes.dex
+base.1=C\:\\Users\\JonathanDziedzitz\\Documents\\kreathon\\AndroidApp\\roscameratestapp\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_749d824203385a0ba03faab209b8d5f5e860d25f
+file.0=C\:\\Users\\JonathanDziedzitz\\Documents\\kreathon\\AndroidApp\\roscameratestapp\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_45111cffe21376b9bdee4007acc354dd1678ee96\\classes.dex

@@ -32,7 +32,7 @@ dependencies {
     })
     compile 'org.ros.android_core:android_15:[0.3,0.4)'
     compile 'org.ros.rosjava_core:rosjava:0.3.5'
-    compile 'org.ros.rosjava_messages:sensor_msgs:[0.1,)'
+    compile 'org.ros.rosjava_messages:sensor_msgs:[0.3.0,)'
     compile 'me.dm7.barcodescanner:zbar:1.9.8'
     compile 'me.dm7.barcodescanner:zxing:1.9.8'
     compile 'com.android.support:multidex:1.0.1'

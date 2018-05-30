@@ -12,6 +12,7 @@ import org.ros.node.ConnectedNode;
 import org.ros.node.Node;
 import org.ros.node.topic.Subscriber;
 
+import de.fzi.ipe.kreathonrosapp.activities.MainActivity;
 import de.fzi.ipe.kreathonrosapp.activities.ViewImageActivity;
 import sensor_msgs.CompressedImage;
 
@@ -35,6 +36,10 @@ public class ROSImageSubscriber extends ROSNodeMain {
         NameResolver resolver = connectedNode.getResolver().newChild("camera");
         this.imageSubscriber = connectedNode.newSubscriber(resolver.resolve("image/compressed"), "sensor_msgs/CompressedImage");
         this.imageSubscriber.addMessageListener(new ROSImageSubscriber.ImageListener());
+
+        for(MainActivity.OnRosNodeRunningListener listener : startListeners) {
+            listener.OnRosNodeStarted(this);
+        }
     }
 
     @Override

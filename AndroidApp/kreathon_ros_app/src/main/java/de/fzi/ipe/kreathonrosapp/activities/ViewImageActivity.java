@@ -52,6 +52,10 @@ public class ViewImageActivity extends AppCompatActivity {
         this.imageView = (ImageView) findViewById(R.id.imageView2);
     }
 
+    public boolean isConnetected() {
+        return imageSubscriber.getConnectedNode() != null;
+    }
+
     public class OnNewBitmapListener {
         public void onNewBitmap(final Bitmap b) {
 

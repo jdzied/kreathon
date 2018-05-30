@@ -1,5 +1,8 @@
 package de.fzi.ipe.kreathonrosapp.activities;
 
+import de.fzi.ipe.kreathonrosapp.utils.MessageAlertFragment;
+import de.fzi.ipe.kreathonrosapp.utils.ROSNodeMain;
+import de.fzi.ipe.kreathonrosapp.utils.ROSTextPublisher;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 import android.content.DialogInterface;
@@ -11,6 +14,10 @@ import android.view.ViewGroup;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
 
+import org.ros.address.InetAddressFactory;
+import org.ros.node.NodeConfiguration;
+
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,9 +27,34 @@ public class BarcodeScannerActivity extends AppCompatActivity implements ZXingSc
     private ZXingScannerView mScannerView;
     private ArrayList<Integer> mSelectedIndices;
 
+    private ROSTextPublisher textPublisher;
+
     @Override
     public void onCreate(Bundle state) {
         super.onCreate(state);
+
+        URI rosMasterUri = (URI) getIntent().getExtras().get("MasterURI");
+
+        textPublisher = new ROSTextPublisher();
+        textPublisher.addOnStartListener(new MainActivity.OnRosNodeRunningListener() {
+            @Override
+            public void OnRosNodeStarted(ROSNodeMain node) {
+                MessageAlertFragment message = MessageAlertFragment.newInstance(BarcodeScannerActivity.this,
+                        "Ros node started",
+                        "Started ros node " + node.toString());
+                message.show(BarcodeScannerActivity.this.getFragmentManager(), "ros_node_start");
+            }
+        });
+
+        NodeConfiguration nodeConfiguration =
+                NodeConfiguration.newPublic(InetAddressFactory.newNonLoopback().getHostAddress());
+
+        String nodeName = textPublisher.getDefaultNodeName() + "_" + InetAddressFactory.newNonLoopback().getHostAddress().replace(".","");
+
+        nodeConfiguration.setNodeName(nodeName);
+        nodeConfiguration.setMasterUri(rosMasterUri);
+        MainActivity.nodeMainExecutor.execute(textPublisher, nodeConfiguration);
+
         setContentView(R.layout.activity_barcode_sanner);
         ViewGroup contentFrame = (ViewGroup) findViewById(R.id.barcodeScannerContent);
         mScannerView = new ZXingScannerView(this);
@@ -63,20 +95,30 @@ public class BarcodeScannerActivity extends AppCompatActivity implements ZXingSc
     }
 
     @Override
-    public void handleResult(Result rawResult) {
+    public void handleResult(final Result rawResult) {
         String message = "Contents = " + rawResult.getText() + ", Format = " + rawResult.getBarcodeFormat().toString();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(message)
                 .setTitle("Barcode Read");
-        builder.setNeutralButton("Close", new DialogInterface.OnClickListener() {
+
+        builder.setPositiveButton("Publish", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                return;
+                BarcodeScannerActivity.this.publishText(rawResult.getText());
+                mScannerView.resumeCameraPreview(BarcodeScannerActivity.this);
             }
         });
-        builder.create().show();
+        builder.setNegativeButton("Close", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                mScannerView.resumeCameraPreview(BarcodeScannerActivity.this);
+            }
+        });
 
-        // If you would like to resume scanning, call this method below:
-        mScannerView.resumeCameraPreview(this);
+        builder.create().show();
+    }
+
+    private void publishText(String text){
+        textPublisher.publishText(text);
     }
 }

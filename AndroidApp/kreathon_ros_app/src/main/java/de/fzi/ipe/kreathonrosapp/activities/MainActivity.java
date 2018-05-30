@@ -155,10 +155,10 @@ public class MainActivity extends AppCompatActivity {
     private void takeImage() {
         if (!isCameraPermissionGranted) {
             checkCameraPermission();
-            return;
         }
         if(imagePublisher.getConnectedNode() == null ) {
             showAlert("Not connected to ros master.", "Error", "", null, false);
+            return;
         }
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
@@ -189,6 +189,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         Intent intent = new Intent(this, BarcodeScannerActivity.class);
+        intent.putExtra("MasterURI", getRosMasterUri());
         startActivity(intent);
     }
 

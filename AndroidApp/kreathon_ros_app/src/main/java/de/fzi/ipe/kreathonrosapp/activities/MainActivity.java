@@ -1,10 +1,16 @@
 package de.fzi.ipe.kreathonrosapp.activities;
 
+import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,7 +29,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import de.fzi.ipe.kreathonrosapp.R;
+import de.fzi.ipe.kreathonrosapp.utils.MessageAlertFragment;
 import de.fzi.ipe.kreathonrosapp.utils.ROSImagePublisher;
+import de.fzi.ipe.kreathonrosapp.utils.ROSNodeMain;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,29 +45,46 @@ public class MainActivity extends AppCompatActivity {
     private ROSImagePublisher imagePublisher;
 
     private String currentPhotoPath;
+    private boolean isCameraPermissionGranted = false;
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
     static final String imageId = "Ros_Testapp_Image";
+
+    static final int PERMISSION_REQUEST_CAMERA = 10;
+
+    public interface OnRosNodeRunningListener {
+        public void OnRosNodeStarted(ROSNodeMain node);
+    }
 
     private URI getRosMasterUri() {
         try {
             return new URI(getResources().getString(R.string.ros_master_uri));
         } catch (URISyntaxException e) {
             e.printStackTrace();
-            return (URI)null;
+            return (URI) null;
         }
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
         imagePublisher = new ROSImagePublisher();
+        imagePublisher.addOnStartListener(new OnRosNodeRunningListener() {
+            @Override
+            public void OnRosNodeStarted(ROSNodeMain node) {
+                MessageAlertFragment message = MessageAlertFragment.newInstance(MainActivity.this,
+                        "Ros Node Started",
+                        "Started ros node " + node.toString());
+                message.show(MainActivity.this.getFragmentManager(), "ros_node_start");
+            }
+        });
         NodeConfiguration nodeConfiguration =
                 NodeConfiguration.newPublic(InetAddressFactory.newNonLoopback().getHostAddress());
 
-        String nodeName = imagePublisher.getDefaultNodeName() + "_" + InetAddressFactory.newNonLoopback().getHostAddress().replace(".","");
+        String nodeName = imagePublisher.getDefaultNodeName() + "_" + InetAddressFactory.newNonLoopback().getHostAddress().replace(".", "");
 
         nodeConfiguration.setNodeName(nodeName);
         nodeConfiguration.setMasterUri(getRosMasterUri());
@@ -127,7 +152,14 @@ public class MainActivity extends AppCompatActivity {
         return image;
     }
 
-    private void takeImage(){
+    private void takeImage() {
+        if (!isCameraPermissionGranted) {
+            checkCameraPermission();
+            return;
+        }
+        if(imagePublisher.getConnectedNode() == null ) {
+            showAlert("Not connected to ros master.", "Error", "", null, false);
+        }
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             File imageFile = null;
@@ -138,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             if (imageFile != null) {
-                Uri imageURI = FileProvider.getUriForFile(this,"de.fzi.ipe.kreathonrosapp.fileprovider", imageFile);
+                Uri imageURI = FileProvider.getUriForFile(this, "de.fzi.ipe.kreathonrosapp.fileprovider", imageFile);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageURI);
                 startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
             }
@@ -152,8 +184,68 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void onScanBarcodeClick() {
+        if (!isCameraPermissionGranted) {
+            checkCameraPermission();
+            return;
+        }
         Intent intent = new Intent(this, BarcodeScannerActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[],
+                                           int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSION_REQUEST_CAMERA:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                    isCameraPermissionGranted = true;
+        }
+    }
+
+    private void checkCameraPermission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+            requestCameraPermission();
+        } else {
+            isCameraPermissionGranted = true;
+        }
+    }
+
+    private void requestCameraPermission() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                Manifest.permission.CAMERA)) {
+            DialogInterface.OnClickListener callback = new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    ActivityCompat.requestPermissions(MainActivity.this,
+                            new String[]{Manifest.permission.CAMERA},
+                            PERMISSION_REQUEST_CAMERA);
+                }
+            };
+            showAlert("Camera permission was not granted",
+                    "Error!",
+                    "Ask again",
+                    callback,
+                    true);
+        } else {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.CAMERA},
+                    PERMISSION_REQUEST_CAMERA);
+        }
+    }
+
+    private void showAlert(String message,
+                           String title,
+                           String buttonTitle,
+                           DialogInterface.OnClickListener buttonCallback,
+                           boolean showCloseButton) {
+        MessageAlertFragment alert = MessageAlertFragment.newInstance(this, title, message);
+        if (showCloseButton)
+            alert.setNegativeButton("Close", null);
+        if (buttonTitle != null)
+            alert.setPositiveButton(buttonTitle, buttonCallback);
+        alert.show(this.getFragmentManager(), "main_activity_alert");
     }
 
     private void mongoButtonClick() {

@@ -7,7 +7,6 @@ import org.ros.namespace.GraphName;
 import org.ros.namespace.NameResolver;
 import org.ros.node.ConnectedNode;
 import org.ros.node.Node;
-import org.ros.node.NodeMain;
 import org.ros.node.topic.Publisher;
 
 import java.io.File;
@@ -15,9 +14,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import de.fzi.ipe.kreathonrosapp.activities.MainActivity;
 import sensor_msgs.CompressedImage;
 
-public class ROSImagePublisher implements NodeMain {
+public class ROSImagePublisher extends ROSNodeMain {
 
     private ConnectedNode connectedNode;
     private Publisher<CompressedImage> imagePublisher;
@@ -31,6 +31,10 @@ public class ROSImagePublisher implements NodeMain {
         this.connectedNode = connectedNode;
         NameResolver resolver = connectedNode.getResolver().newChild("camera");
         this.imagePublisher = connectedNode.newPublisher(resolver.resolve("image/compressed"), "sensor_msgs/CompressedImage");
+
+        for(MainActivity.OnRosNodeRunningListener listener : startListeners) {
+            listener.OnRosNodeStarted(this);
+        }
     }
 
     @Override
@@ -44,6 +48,10 @@ public class ROSImagePublisher implements NodeMain {
 
     @Override
     public void onError(Node node, Throwable throwable) {
+    }
+
+    public ConnectedNode getConnectedNode() {
+        return this.connectedNode;
     }
 
     private static byte[] getRawBytesFromFile(String path) throws FileNotFoundException, IOException {

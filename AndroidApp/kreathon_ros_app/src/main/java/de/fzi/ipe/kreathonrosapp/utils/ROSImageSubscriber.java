@@ -10,13 +10,12 @@ import org.ros.namespace.GraphName;
 import org.ros.namespace.NameResolver;
 import org.ros.node.ConnectedNode;
 import org.ros.node.Node;
-import org.ros.node.NodeMain;
 import org.ros.node.topic.Subscriber;
 
 import de.fzi.ipe.kreathonrosapp.activities.ViewImageActivity;
 import sensor_msgs.CompressedImage;
 
-public class ROSImageSubscriber implements NodeMain {
+public class ROSImageSubscriber extends ROSNodeMain {
 
     private ConnectedNode connectedNode;
     private Subscriber<CompressedImage> imageSubscriber;
@@ -50,6 +49,10 @@ public class ROSImageSubscriber implements NodeMain {
 
     @Override
     public void onError(Node node, Throwable throwable) {
+    }
+
+    public ConnectedNode getConnectedNode() {
+        return connectedNode;
     }
 
     public Bitmap getLastImage(){

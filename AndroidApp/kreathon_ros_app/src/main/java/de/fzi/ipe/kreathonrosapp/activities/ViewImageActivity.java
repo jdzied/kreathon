@@ -11,7 +11,9 @@ import org.ros.node.NodeConfiguration;
 import java.net.URI;
 
 import de.fzi.ipe.kreathonrosapp.R;
+import de.fzi.ipe.kreathonrosapp.utils.MessageAlertFragment;
 import de.fzi.ipe.kreathonrosapp.utils.ROSImageSubscriber;
+import de.fzi.ipe.kreathonrosapp.utils.ROSNodeMain;
 
 public class ViewImageActivity extends AppCompatActivity {
 
@@ -27,6 +29,16 @@ public class ViewImageActivity extends AppCompatActivity {
         URI rosMasterUri = (URI) getIntent().getExtras().get("MasterURI");
 
         imageSubscriber = new ROSImageSubscriber();
+        imageSubscriber.addOnStartListener(new MainActivity.OnRosNodeRunningListener() {
+            @Override
+            public void OnRosNodeStarted(ROSNodeMain node) {
+                MessageAlertFragment message = MessageAlertFragment.newInstance(ViewImageActivity.this,
+                        "Ros node started",
+                        "Started ros node " + node.toString());
+                message.show(ViewImageActivity.this.getFragmentManager(), "ros_node_start");
+            }
+        });
+
         imageSubscriber.setOnNewBitmapListener(new OnNewBitmapListener());
         NodeConfiguration nodeConfiguration =
                 NodeConfiguration.newPublic(InetAddressFactory.newNonLoopback().getHostAddress());

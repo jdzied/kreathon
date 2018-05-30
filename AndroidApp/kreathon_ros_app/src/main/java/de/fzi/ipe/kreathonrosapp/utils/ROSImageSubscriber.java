@@ -12,6 +12,8 @@ import org.ros.node.ConnectedNode;
 import org.ros.node.Node;
 import org.ros.node.topic.Subscriber;
 
+import java.util.concurrent.TimeUnit;
+
 import de.fzi.ipe.kreathonrosapp.activities.MainActivity;
 import de.fzi.ipe.kreathonrosapp.activities.ViewImageActivity;
 import sensor_msgs.CompressedImage;
@@ -72,16 +74,17 @@ public class ROSImageSubscriber extends ROSNodeMain {
 
         @Override
         public void onNewMessage(CompressedImage compressedImage) {
-            if(!compressedImage.getFormat().equals("jpeg"))
-            {
-                return;
-            }
-            ChannelBuffer jpegBufferData = compressedImage.getData();
-            byte[] imageBytes = jpegBufferData.toByteBuffer().array();
-            Bitmap image = BitmapFactory.decodeByteArray(imageBytes, jpegBufferData.arrayOffset(), jpegBufferData.readableBytes());
-            ROSImageSubscriber.this.lastImage = image;
-            ROSImageSubscriber.this.onBitmapListener.onNewBitmap(image);
+
+            try {
+                ChannelBuffer jpegBufferData = compressedImage.getData();
+                byte[] imageBytes = jpegBufferData.toByteBuffer().array();
+                Bitmap image = BitmapFactory.decodeByteArray(imageBytes, jpegBufferData.arrayOffset(), jpegBufferData.readableBytes());
+                ROSImageSubscriber.this.lastImage = image;
+                ROSImageSubscriber.this.onBitmapListener.onNewBitmap(image);
+            } catch (Exception e) {
+                System.out.println("message received but something wrong with the format!");
+                e.printStackTrace();
+                }
         }
     }
-
 }

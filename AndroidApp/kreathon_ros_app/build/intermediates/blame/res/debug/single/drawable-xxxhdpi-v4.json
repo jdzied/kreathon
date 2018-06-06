@@ -24,12 +24,12 @@
         "source": "C:\\Users\\JonathanDziedzitz\\.android\\build-cache\\63ec115ae94aeedfa9890c934cc4dce320b9d5f3\\output\\res\\drawable-xxxhdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png"
     },
     {
-        "merged": "C:\\Users\\JonathanDziedzitz\\Documents\\kreathon\\AndroidApp\\kreathon_ros_app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\abc_ic_star_half_black_48dp.png",
-        "source": "C:\\Users\\JonathanDziedzitz\\.android\\build-cache\\63ec115ae94aeedfa9890c934cc4dce320b9d5f3\\output\\res\\drawable-xxxhdpi-v4\\abc_ic_star_half_black_48dp.png"
-    },
-    {
         "merged": "C:\\Users\\JonathanDziedzitz\\Documents\\kreathon\\AndroidApp\\kreathon_ros_app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png",
         "source": "C:\\Users\\JonathanDziedzitz\\.android\\build-cache\\63ec115ae94aeedfa9890c934cc4dce320b9d5f3\\output\\res\\drawable-xxxhdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png"
+    },
+    {
+        "merged": "C:\\Users\\JonathanDziedzitz\\Documents\\kreathon\\AndroidApp\\kreathon_ros_app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\abc_ic_star_half_black_48dp.png",
+        "source": "C:\\Users\\JonathanDziedzitz\\.android\\build-cache\\63ec115ae94aeedfa9890c934cc4dce320b9d5f3\\output\\res\\drawable-xxxhdpi-v4\\abc_ic_star_half_black_48dp.png"
     },
     {
         "merged": "C:\\Users\\JonathanDziedzitz\\Documents\\kreathon\\AndroidApp\\kreathon_ros_app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png",

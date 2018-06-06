@@ -2,8 +2,8 @@
 /*/build/
 /*/devel/
 
-/AndroidApp/kreathon_ros_app/build
-/AndroidApp/roscameratestapp/build
+/AndroidApp/kreathon_ros_app/build/
+/AndroidApp/roscameratestapp/build/
 
 # Crashlytics configuations
 /*/com_crashlytics_export_strings.xml

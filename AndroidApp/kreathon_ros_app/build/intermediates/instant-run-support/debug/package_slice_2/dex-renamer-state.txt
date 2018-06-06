@@ -1,4 +1,4 @@
-#Tue May 29 11:28:30 CEST 2018
+#Wed May 30 13:59:50 CEST 2018
 base.0=C\:\\Users\\JonathanDziedzitz\\Documents\\kreathon\\AndroidApp\\kreathon_ros_app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_2
 renamed.0=classes.dex
 file.0=C\:\\Users\\JonathanDziedzitz\\Documents\\kreathon\\AndroidApp\\kreathon_ros_app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_2\\classes.dex

@@ -1,4 +1,0 @@
-#Tue May 29 11:22:14 CEST 2018
-base.0=C\:\\Users\\JonathanDziedzitz\\Documents\\kreathon\\AndroidApp\\roscameratestapp\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_4
-renamed.0=classes.dex
-file.0=C\:\\Users\\JonathanDziedzitz\\Documents\\kreathon\\AndroidApp\\roscameratestapp\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_4\\classes.dex

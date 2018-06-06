@@ -154,7 +154,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void takeImage() {
         if (!isCameraPermissionGranted) {
-            checkCameraPermission();
+            if(!checkCameraPermission())
+                return;
         }
         if(imagePublisher.getConnectedNode() == null ) {
             showAlert("Not connected to ros master.", "Error", "", null, false);
@@ -185,8 +186,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void onScanBarcodeClick() {
         if (!isCameraPermissionGranted) {
-            checkCameraPermission();
-            return;
+            if(!checkCameraPermission())
+                return;
         }
         Intent intent = new Intent(this, BarcodeScannerActivity.class);
         intent.putExtra("MasterURI", getRosMasterUri());
@@ -204,13 +205,16 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void checkCameraPermission() {
+    private boolean checkCameraPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
             requestCameraPermission();
-        } else {
+        }
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                == PackageManager.PERMISSION_GRANTED) {
             isCameraPermissionGranted = true;
         }
+        return isCameraPermissionGranted;
     }
 
     private void requestCameraPermission() {

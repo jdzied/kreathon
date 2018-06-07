@@ -38,10 +38,6 @@ public class ROSTextPublisher extends ROSNodeMain {
     public void onShutdownComplete(Node node) {
     }
 
-    @Override
-    public void onError(Node node, Throwable throwable) {
-    }
-
     public void publishText(java.lang.String text) {
         std_msgs.String stringMessage = this.textPublisher.newMessage();
         stringMessage.setData(text);

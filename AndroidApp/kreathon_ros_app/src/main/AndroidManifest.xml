@@ -20,7 +20,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="de.fzi.ipe.kreathonrosapp.activities.MainActivity">
+        <activity android:name="de.fzi.ipe.kreathonrosapp.activities.MainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,9 +29,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="de.fzi.ipe.kreathonrosapp.activities.ViewImageActivity" />
+        <activity android:name="de.fzi.ipe.kreathonrosapp.activities.ViewImageActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"/>
 
         <activity android:name="de.fzi.ipe.kreathonrosapp.activities.BarcodeScannerActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:theme="@style/AppOverlayTheme"
             android:uiOptions="splitActionBarWhenNarrow"
             android:label="barcodeScannerActivity">
@@ -38,7 +41,8 @@
                 android:value="splitActionBarWhenNarrow" />
         </activity>
 
-        <activity android:name="de.fzi.ipe.kreathonrosapp.activities.MongoDBActivity" />
+        <activity android:name="de.fzi.ipe.kreathonrosapp.activities.MongoDBActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"/>
 
         <provider
             android:name="android.support.v4.content.FileProvider"

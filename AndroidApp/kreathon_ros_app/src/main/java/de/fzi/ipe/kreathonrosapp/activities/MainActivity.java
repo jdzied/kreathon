@@ -10,14 +10,15 @@ import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import org.ros.address.InetAddressFactory;
 import org.ros.node.DefaultNodeMainExecutor;
+import org.ros.node.Node;
 import org.ros.node.NodeConfiguration;
 import org.ros.node.NodeMainExecutor;
 
@@ -39,10 +40,14 @@ public class MainActivity extends AppCompatActivity {
     private Button viewImageButton;
     private Button scanBarcodeButton;
     private Button mongoButton;
+    private Button retryConnectButton;
+
+    private TextView connectionText;
 
     public final static NodeMainExecutor nodeMainExecutor = DefaultNodeMainExecutor.newDefault();
 
     private ROSImagePublisher imagePublisher;
+    private NodeConfiguration nodeConfiguration;
 
     private String currentPhotoPath;
     private boolean isCameraPermissionGranted = false;
@@ -53,7 +58,11 @@ public class MainActivity extends AppCompatActivity {
     static final int PERMISSION_REQUEST_CAMERA = 10;
 
     public interface OnRosNodeRunningListener {
-        public void OnRosNodeStarted(ROSNodeMain node);
+        void OnRosNodeStarted(ROSNodeMain node);
+    }
+
+    public interface OnRosNodeErrorListener {
+        void OnRosNodeError(Node node, Throwable throwable);
     }
 
     private URI getRosMasterUri() {
@@ -71,25 +80,12 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        imagePublisher = new ROSImagePublisher();
-        imagePublisher.addOnStartListener(new OnRosNodeRunningListener() {
-            @Override
-            public void OnRosNodeStarted(ROSNodeMain node) {
-                MessageAlertFragment message = MessageAlertFragment.newInstance(MainActivity.this,
-                        "Ros Node Started",
-                        "Started ros node " + node.toString());
-                message.show(MainActivity.this.getFragmentManager(), "ros_node_start");
-            }
-        });
-        NodeConfiguration nodeConfiguration =
-                NodeConfiguration.newPublic(InetAddressFactory.newNonLoopback().getHostAddress());
+        assignViewObjects();
 
-        String nodeName = imagePublisher.getDefaultNodeName() + "_" + InetAddressFactory.newNonLoopback().getHostAddress().replace(".", "");
+        setUpImagePublisher();
+    }
 
-        nodeConfiguration.setNodeName(nodeName);
-        nodeConfiguration.setMasterUri(getRosMasterUri());
-        nodeMainExecutor.execute(imagePublisher, nodeConfiguration);
-
+    private void assignViewObjects() {
         takeImageButton = (Button) findViewById(R.id.takeImageButton);
         takeImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,6 +117,57 @@ public class MainActivity extends AppCompatActivity {
                 onScanBarcodeClick();
             }
         });
+
+        retryConnectButton = (Button) findViewById(R.id.retryConnectButton);
+        retryConnectButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onRetryConnectClick();
+            }
+        });
+
+        connectionText = (TextView) findViewById(R.id.connectionTextView);
+    }
+
+    protected void setUpImagePublisher() {
+        imagePublisher = new ROSImagePublisher();
+        imagePublisher.addOnStartListener(new OnRosNodeRunningListener() {
+            @Override
+            public void OnRosNodeStarted(ROSNodeMain node) {
+                MessageAlertFragment message = MessageAlertFragment.newInstance(MainActivity.this,
+                        "Ros Node Started",
+                        "Started ros node " + node.toString());
+                message.setPositiveButton("Ok", null);
+                message.show(MainActivity.this.getFragmentManager(), "ros_node_start");
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        MainActivity.this.setConnectedUI();
+                    }
+                });
+            }
+        });
+        imagePublisher.addOnErrorListener(new OnRosNodeErrorListener() {
+            @Override
+            public void OnRosNodeError(Node node, Throwable throwable) {
+                imagePublisher = null;
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        MainActivity.this.setNotConnectedUI();
+                    }
+                });
+            }
+        });
+        nodeConfiguration =
+                NodeConfiguration.newPublic(InetAddressFactory.newNonLoopback().getHostAddress());
+
+        String nodeName = imagePublisher.getDefaultNodeName() + "_" +
+                InetAddressFactory.newNonLoopback().getHostAddress().replace(".", "");
+
+        nodeConfiguration.setNodeName(nodeName);
+        nodeConfiguration.setMasterUri(getRosMasterUri());
+        nodeMainExecutor.execute(imagePublisher, nodeConfiguration);
     }
 
     @Override
@@ -135,6 +182,31 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         nodeMainExecutor.shutdown();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    private void setNotConnectedUI() {
+        takeImageButton.setClickable(false);
+        takeImageButton.setTextColor(getResources().getColor((R.color.secondary_text)));
+        viewImageButton.setClickable(false);
+        viewImageButton.setTextColor(getResources().getColor((R.color.secondary_text)));
+        connectionText.setText("Not connected");
+        connectionText.setTextColor(getResources().getColor(R.color.secondary_text));
+        retryConnectButton.setVisibility(View.VISIBLE);
+    }
+
+    private void setConnectedUI() {
+        takeImageButton.setClickable(true);
+        takeImageButton.setTextColor(getResources().getColor((R.color.primary_text)));
+        viewImageButton.setClickable(true);
+        viewImageButton.setTextColor(getResources().getColor((R.color.primary_text)));
+        connectionText.setText("Connected");
+        connectionText.setTextColor(getResources().getColor(R.color.positive_text));
+        retryConnectButton.setVisibility(View.INVISIBLE);
     }
 
     private File createImageFile(String imageName) throws IOException {
@@ -157,10 +229,11 @@ public class MainActivity extends AppCompatActivity {
             if(!checkCameraPermission())
                 return;
         }
-        if(imagePublisher.getConnectedNode() == null ) {
+        if(imagePublisher == null || imagePublisher.getConnectedNode() == null ) {
             showAlert("Not connected to ros master.", "Error", "", null, false);
             return;
         }
+
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             File imageFile = null;
@@ -192,6 +265,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, BarcodeScannerActivity.class);
         intent.putExtra("MasterURI", getRosMasterUri());
         startActivity(intent);
+    }
+
+    public void onRetryConnectClick() {
+        setUpImagePublisher();
     }
 
     @Override

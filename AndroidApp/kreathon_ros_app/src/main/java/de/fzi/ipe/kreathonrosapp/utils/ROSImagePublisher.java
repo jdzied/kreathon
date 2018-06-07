@@ -31,9 +31,8 @@ public class ROSImagePublisher extends ROSNodeMain {
         this.connectedNode = connectedNode;
         NameResolver resolver = connectedNode.getResolver().newChild("camera");
         this.imagePublisher = connectedNode.newPublisher(resolver.resolve("image/compressed"), "sensor_msgs/CompressedImage");
-
         for(MainActivity.OnRosNodeRunningListener listener : startListeners) {
-            listener.OnRosNodeStarted(this);
+            listener.OnRosNodeStarted(ROSImagePublisher.this);
         }
     }
 
@@ -44,10 +43,6 @@ public class ROSImagePublisher extends ROSNodeMain {
 
     @Override
     public void onShutdownComplete(Node node) {
-    }
-
-    @Override
-    public void onError(Node node, Throwable throwable) {
     }
 
     public ConnectedNode getConnectedNode() {

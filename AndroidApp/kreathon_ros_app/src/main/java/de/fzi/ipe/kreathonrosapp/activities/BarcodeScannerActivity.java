@@ -8,7 +8,6 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v4.app.DialogFragment;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import com.google.zxing.BarcodeFormat;
@@ -42,6 +41,7 @@ public class BarcodeScannerActivity extends AppCompatActivity implements ZXingSc
                 MessageAlertFragment message = MessageAlertFragment.newInstance(BarcodeScannerActivity.this,
                         "Ros node started",
                         "Started ros node " + node.toString());
+                message.setPositiveButton("Ok", null);
                 message.show(BarcodeScannerActivity.this.getFragmentManager(), "ros_node_start");
             }
         });

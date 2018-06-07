@@ -35,6 +35,7 @@ public class ViewImageActivity extends AppCompatActivity {
                 MessageAlertFragment message = MessageAlertFragment.newInstance(ViewImageActivity.this,
                         "Ros node started",
                         "Started ros node " + node.toString());
+                message.setPositiveButton("Ok", null);
                 message.show(ViewImageActivity.this.getFragmentManager(), "ros_node_start");
             }
         });

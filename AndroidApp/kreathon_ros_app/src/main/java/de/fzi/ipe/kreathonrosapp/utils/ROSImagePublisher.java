@@ -18,7 +18,6 @@ import org.apache.commons.imaging.ImageReadException;
 import org.apache.commons.imaging.Imaging;
 import org.apache.commons.imaging.formats.jpeg.JpegImageMetadata;
 import org.apache.commons.imaging.formats.tiff.TiffField;
-import org.apache.commons.imaging.formats.tiff.TiffImageMetadata;
 import org.apache.commons.imaging.formats.tiff.constants.TiffTagConstants;
 
 import java.io.File;
@@ -82,9 +81,14 @@ public class ROSImagePublisher extends ROSNodeMain {
         try {
             final IImageMetadata metadata = Imaging.getMetadata(imageFile);
             final JpegImageMetadata jpegMetadata = (JpegImageMetadata) metadata;
-            final TiffImageMetadata exifMetadata = jpegMetadata.getExif();
-            TiffField tiff_orientation = jpegMetadata.findEXIFValue(TiffTagConstants.TIFF_TAG_ORIENTATION);
-            int orientationIntValue = tiff_orientation.getIntValue();
+
+            int orientationIntValue = 1;
+
+            if(jpegMetadata != null) {
+                TiffField tiff_orientation = jpegMetadata.findEXIFValue(TiffTagConstants.TIFF_TAG_ORIENTATION);
+                if(tiff_orientation != null)
+                    orientationIntValue = tiff_orientation.getIntValue();
+            }
 
             if (orientationIntValue == 6) {
                 Bitmap image = BitmapFactory.decodeFile(imageFile.getAbsolutePath());

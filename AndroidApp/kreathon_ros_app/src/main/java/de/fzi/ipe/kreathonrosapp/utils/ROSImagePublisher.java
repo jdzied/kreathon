@@ -28,11 +28,13 @@ import java.io.IOException;
 
 import de.fzi.ipe.kreathonrosapp.activities.MainActivity;
 import sensor_msgs.CompressedImage;
+import sensor_msgs.CameraInfo;
 
 public class ROSImagePublisher extends ROSNodeMain {
 
     private ConnectedNode connectedNode;
     private Publisher<CompressedImage> imagePublisher;
+    private Publisher<CameraInfo> cameraInfoPublisher;
 
     public GraphName getDefaultNodeName() {
         return GraphName.of("ros_android_image_publisher");
@@ -43,6 +45,7 @@ public class ROSImagePublisher extends ROSNodeMain {
         this.connectedNode = connectedNode;
         NameResolver resolver = connectedNode.getResolver().newChild("camera");
         this.imagePublisher = connectedNode.newPublisher(resolver.resolve("image/compressed"), "sensor_msgs/CompressedImage");
+        this.cameraInfoPublisher = connectedNode.newPublisher(resolver.resolve("camera_info"), "sensor_msgs/CameraInfo");
         for(MainActivity.OnRosNodeRunningListener listener : startListeners) {
             listener.OnRosNodeStarted(ROSImagePublisher.this);
         }

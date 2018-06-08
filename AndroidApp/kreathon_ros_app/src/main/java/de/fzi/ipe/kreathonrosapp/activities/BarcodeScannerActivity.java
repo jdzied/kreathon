@@ -95,6 +95,12 @@ public class BarcodeScannerActivity extends AppCompatActivity implements ZXingSc
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        MainActivity.nodeMainExecutor.shutdownNodeMain(textPublisher);
+    }
+
+    @Override
     public void handleResult(final Result rawResult) {
         String message = "Contents = " + rawResult.getText() + ", Format = " + rawResult.getBarcodeFormat().toString();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

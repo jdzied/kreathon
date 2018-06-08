@@ -53,6 +53,12 @@ public class ViewImageActivity extends AppCompatActivity {
         this.imageView = (ImageView) findViewById(R.id.imageView2);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        MainActivity.nodeMainExecutor.shutdownNodeMain(imageSubscriber);
+    }
+
     public boolean isConnetected() {
         return imageSubscriber.getConnectedNode() != null;
     }

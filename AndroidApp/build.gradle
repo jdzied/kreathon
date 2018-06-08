@@ -82,4 +82,10 @@ subprojects {
             }
         }
     }
+
+    repositories {
+        maven {
+            url "https://repo.adobe.com/nexus/content/repositories/public"
+        }
+    }
 }

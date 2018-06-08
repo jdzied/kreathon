@@ -76,6 +76,8 @@ public class ROSImageSubscriber extends ROSNodeMain {
         public void onNewMessage(CompressedImage compressedImage) {
 
             try {
+                ROSImageSubscriber.this.lastImage = null;
+                ROSImageSubscriber.this.onBitmapListener.onNewBitmap(Bitmap.createBitmap(1,1, Bitmap.Config.ALPHA_8));
                 ChannelBuffer jpegBufferData = compressedImage.getData();
                 byte[] imageBytes = jpegBufferData.toByteBuffer().array();
                 Bitmap image = BitmapFactory.decodeByteArray(imageBytes, jpegBufferData.arrayOffset(), jpegBufferData.readableBytes());

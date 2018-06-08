@@ -37,4 +37,5 @@ dependencies {
     compile 'me.dm7.barcodescanner:zxing:1.9.8'
     compile 'com.android.support:multidex:1.0.1'
     compile 'org.mongodb:mongo-java-driver:3.6.3'
+    compile group: 'org.apache.commons', name: 'commons-imaging', version: '1.0-R1401825'
 }

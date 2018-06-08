@@ -59,10 +59,10 @@ public class ViewImageActivity extends AppCompatActivity {
 
     public class OnNewBitmapListener {
         public void onNewBitmap(final Bitmap b) {
-
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
+                    ViewImageActivity.this.imageView.setImageResource(android.R.color.transparent);
                     ViewImageActivity.this.imageView.setImageBitmap(b);
                 }
             });

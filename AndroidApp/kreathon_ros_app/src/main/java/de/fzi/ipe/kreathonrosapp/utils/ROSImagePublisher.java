@@ -1,5 +1,10 @@
 package de.fzi.ipe.kreathonrosapp.utils;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+
+import org.apache.commons.imaging.common.IImageMetadata;
 import org.jboss.netty.buffer.ChannelBufferOutputStream;
 import org.ros.internal.message.MessageBuffers;
 import org.ros.message.Time;
@@ -8,6 +13,13 @@ import org.ros.namespace.NameResolver;
 import org.ros.node.ConnectedNode;
 import org.ros.node.Node;
 import org.ros.node.topic.Publisher;
+
+import org.apache.commons.imaging.ImageReadException;
+import org.apache.commons.imaging.Imaging;
+import org.apache.commons.imaging.formats.jpeg.JpegImageMetadata;
+import org.apache.commons.imaging.formats.tiff.TiffField;
+import org.apache.commons.imaging.formats.tiff.TiffImageMetadata;
+import org.apache.commons.imaging.formats.tiff.constants.TiffTagConstants;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -64,16 +76,27 @@ public class ROSImagePublisher extends ROSNodeMain {
     public void sendImage(File imageFile) {
         ChannelBufferOutputStream bufferStream = new ChannelBufferOutputStream(MessageBuffers.dynamicBuffer());
 
-        byte[] imageBytes = new byte[0];
-
         try {
-            imageBytes = getRawBytesFromFile(imageFile.getAbsolutePath());
-        } catch (IOException e) {
+            final IImageMetadata metadata = Imaging.getMetadata(imageFile);
+            final JpegImageMetadata jpegMetadata = (JpegImageMetadata) metadata;
+            final TiffImageMetadata exifMetadata = jpegMetadata.getExif();
+            TiffField tiff_orientation = jpegMetadata.findEXIFValue(TiffTagConstants.TIFF_TAG_ORIENTATION);
+            int orientationIntValue = tiff_orientation.getIntValue();
+
+            if (orientationIntValue == 6) {
+                Bitmap image = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
+                Matrix matrix = new Matrix();
+                matrix.setRotate(90);
+                Bitmap rotated = Bitmap.createBitmap(image, 0, 0, image.getWidth(), image.getHeight(), matrix, true);
+                rotated.compress(Bitmap.CompressFormat.JPEG, 100, bufferStream);
+            }
+            else {
+                byte[] imageBytes = new byte[0];
+                imageBytes = getRawBytesFromFile(imageFile.getAbsolutePath());
+                bufferStream.write(imageBytes);
+            }
+        } catch (ImageReadException e) {
             e.printStackTrace();
-        }
-
-        try {
-            bufferStream.write(imageBytes);
         } catch (IOException e) {
             e.printStackTrace();
         }

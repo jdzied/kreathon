@@ -175,6 +175,7 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             File imageFile = new File(currentPhotoPath);
             imagePublisher.sendImage(imageFile);
+            imageFile.delete();
         }
     }
 
